@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap, catchError } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { Book } from '../models/book.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private apiUrl = 'https://localhost:7278/api/books';
+  private apiUrl = `${environment.apiUrl}/books`;
 
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
-    console.log('Fetching books from:', this.apiUrl);
     return this.http.get<Book[]>(this.apiUrl).pipe(
-      tap(data => console.log('Books received:', data)),
       catchError(err => {
         console.error('Error fetching books:', err);
         throw err;

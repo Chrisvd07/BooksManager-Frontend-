@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { BookService } from '../../core/services/book.service';
 import { AuthorService } from '../../core/services/author.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -43,7 +44,7 @@ import { AuthorService } from '../../core/services/author.service';
 
     <div class="dashboard-footer glass-card">
       <mat-icon>info</mat-icon>
-      <span>Connected to .NET API at <strong>localhost:7278</strong></span>
+      <span>Conectado a API Backend en <strong>{{ apiUrl }}</strong></span>
     </div>
   `,
   styles: [`
@@ -100,12 +101,11 @@ export class DashboardComponent implements OnInit {
   private authorService = inject(AuthorService);
   private cdr = inject(ChangeDetectorRef);
 
+  apiUrl = environment.apiUrl;
   totalBooks = 0;
   totalAuthors = 0;
 
   ngOnInit() {
-    console.log('Dashboard initialized, fetching stats...');
-    
     this.bookService.getBooks().subscribe({
       next: (data: any) => {
         const books = Array.isArray(data) ? data : (data.value || []);

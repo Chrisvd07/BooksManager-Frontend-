@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Author } from '../models/book.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
-  private apiUrl = 'https://localhost:7278/api/authors';
+  private apiUrl = `${environment.apiUrl}/authors`;
 
   constructor(private http: HttpClient) {}
 

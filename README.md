@@ -7,10 +7,10 @@ Aplicacion web desarrollada en Angular 21 (arquitectura basada en componentes au
 
 ## 1. Requisitos Previos del Sistema
 Para instalar y ejecutar este proyecto es necesario disponer de:
-- Node.js: Version 18 LTS o 20 LTS instalada en el equipo (https://nodejs.org/).
-- npm: Gestor de paquetes incluido con la instalacion de Node.js (version 9 o superior).
+- Node.js: Version 20.19+, 22.12+ o 24+ instalada en el equipo (requerido por Angular 21, https://nodejs.org/).
+- npm: Gestor de paquetes incluido con la instalacion de Node.js (version 10 o superior).
 - Angular CLI: Opcional para comandos globales de desarrollo (`npm install -g @angular/cli`).
-- Backend API (.NET): Debe encontrarse en ejecucion en https://localhost:7278 para que la aplicacion web pueda consultar y sincronizar datos en tiempo real.
+- Backend API (.NET): Debe encontrarse en ejecucion en https://localhost:7278 (o en http://localhost:5120 si el navegador no tiene configurado el certificado dev de desarrollo; configurable centralizadamente en `src/environments/environment.ts`).
 
 ---
 
